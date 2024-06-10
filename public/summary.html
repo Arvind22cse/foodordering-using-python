@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Summary</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <style>
+        body {
+            background-color: rgb(74, 82, 112);
+        }
+        .container {
+            background-image: linear-gradient(black,rgb(0, 0, 91));
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: cover;
+            padding-bottom: 20px;
+            min-height: 100vh;
+        }
+        .headName {
+            color: rgb(248, 248, 248);
+            text-align: center;
+            background-color: rgb(5, 5, 5);
+            font-family: Algerian;
+            background-size: cover;
+            border-radius: 50px;
+            border: 3px solid black;
+            text-shadow: 5px 5px 5px rgb(128, 128, 128);
+        }
+        .orderSummary {
+            color: white;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="headName">GAAD RESTAURANT ORDER SUMMARY</h1>
+        <div id="orderSummary" class="orderSummary"></div>
+    </div>
+    <script>
+        function fetchOrders() {
+            fetch('/orders')
+                .then(response => response.json())
+                .then(data => {
+                    if (data.status === 'success') {
+                        displayOrders(data.orders);
+                    } else {
+                        alert('Failed to fetch orders.');
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
+        }
+
+        function displayOrders(orders) {
+            const orderSummaryDiv = document.getElementById('orderSummary');
+            if (orders.length === 0) {
+                orderSummaryDiv.innerHTML = '<p>No orders placed yet.</p>';
+                return;
+            }
+
+            let totalAmount = 0;
+            let orderDetails = '<h3>Order Details:</h3><ul>';
+            orders.forEach(order => {
+                if(order.price>0){
+                totalAmount += order.price;
+                orderDetails += `<li>${order.mealName}: ₹${order.price}</li>`;
+            }
+            });
+            orderDetails += '</ul>';
+
+            orderSummaryDiv.innerHTML = `
+                ${orderDetails}
+                <h3>Total Amount: ₹${totalAmount}</h3>
+            `;
+        }
+
+        document.addEventListener('DOMContentLoaded', fetchOrders);
+    </script>
+</body>
+</html>
