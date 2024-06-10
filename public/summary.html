@@ -32,12 +32,16 @@
             color: white;
             margin-top: 20px;
         }
+        .btn-print {
+            margin-top: 20px;
+        }
     </style>
 </head>
 <body>
     <div class="container">
         <h1 class="headName">GAAD RESTAURANT ORDER SUMMARY</h1>
         <div id="orderSummary" class="orderSummary"></div>
+        <button class="btn btn-primary btn-print" onclick="printBill()">Print Bill</button>
     </div>
     <script>
         function fetchOrders() {
@@ -66,9 +70,9 @@
             let orderDetails = '<h3>Order Details:</h3><ul>';
             orders.forEach(order => {
                 if(order.price>0){
-                totalAmount += order.price;
-                orderDetails += `<li>${order.mealName}: ₹${order.price}</li>`;
-            }
+                    totalAmount += order.price;
+                    orderDetails += `<li>${order.mealName}: ₹${order.price}</li>`;
+                }
             });
             orderDetails += '</ul>';
 
@@ -76,6 +80,10 @@
                 ${orderDetails}
                 <h3>Total Amount: ₹${totalAmount}</h3>
             `;
+        }
+
+        function printBill() {
+            window.print();
         }
 
         document.addEventListener('DOMContentLoaded', fetchOrders);
