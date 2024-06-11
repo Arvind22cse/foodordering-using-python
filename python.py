@@ -58,23 +58,22 @@ def login_post():
     except Exception as e:
         print(f"Error during authentication: {e}")
         return "Failed to login", 500
-    
+
 @app.route('/order', methods=['POST'])
 def order_post():
     data = request.get_json()
-    meal_name = data.get('mealName')
-    price = data.get('price')
-    if not meal_name or not price:
-        return jsonify({'status': 'failure', 'reason': 'Invalid input'}), 400
+    meal_name = data['mealName']
+    price = data['price']
+    print(f"Received order: {meal_name} with price: {price}")
     try:
-        order = {'mealName': meal_name, 'price': price}
-        result = db.orders.insert_one(order)
-        order['_id'] = str(result.inserted_id)
+        db.orders.insert_one({'mealName': meal_name, 'price': price})
         print("Order placed successfully")
-        return jsonify({'status': 'success', 'order': order}), 200
+        return jsonify({'status': 'success'}), 200
     except Exception as e:
         print(f"Error placing order: {e}")
-        return jsonify({'status': 'failure', 'reason': str(e)}), 500
+        return jsonify({'status': 'failure'}), 500
+
+
 
 @app.route('/orders', methods=['GET'])
 def get_orders():

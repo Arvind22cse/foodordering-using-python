@@ -143,17 +143,33 @@ body {
       <input type="text" placeholder="Enter Email" name="email" required>
 
       <label for="psw"><b>Password</b></label>
-      <input type="password" placeholder="Enter Password" name="pass" required>
+      <input type="password" placeholder="Enter Password" name="pass" id="myInput" required>
 
       <label for="psw-repeat"><b>Repeat Password</b></label>
-      <input type="password" placeholder="Repeat Password" name="psw-repeat" required>
+      <input type="password" placeholder="Repeat Password" name="psw-repeat" id="myInput2" required>
+      <input type="checkbox" onclick="myFunction()">
+<label for="pass">Show Password</label>
+<script>
+function myFunction() {
+  var x = document.getElementById("myInput");
+  var y= document.getElementById("myInput2");
+  if (x.type && y.type === "password") {
+    y.type = "text";
+    x.type = "text";
+  } else {
+    x.type = "password";
+    y.type = "password";
+  }
+}
+
+</script>
+<br><br>
       
+
+      <p>By creating an account you agree to our <a href="public\terms.html" style="color:dodgerblue">Terms & Privacy</a>.</p>
       <label>
         <input type="checkbox" checked="checked" name="remember" style="margin-bottom:15px"> I Agree
       </label>
-
-      <p>By creating an account you agree to our <a href="#" style="color:dodgerblue">Terms & Privacy</a>.</p>
-
       <div class="clearfix">
         <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
         <button type="submit" class="signupbtn">Sign Up</button>

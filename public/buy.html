@@ -76,6 +76,11 @@
             <h3 class="category-title">Non-Vegetarian</h3>
             <div class="row" id="nonVegItemsList"></div>
         </div>
+        <div id="mojitos" class="category">
+            <h3 class="category-title">Mojitos</h3>
+            <div class="row" id="mojitosList"></div>
+        </div>
+
 
         <div id="orderSummary">
             <h3>Order Summary</h3>
@@ -85,60 +90,99 @@
     </div>
     <script>
         const foodItems = [
-            {
-                src: 'https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_300,h_300,c_fit/d6c7910482661bd8a5940c950dbe69c0',
-                name: 'Hyderabadi Chicken Biryani',
-                price: 299,
-                category: 'non-veg'
-            },
-            {
-                src: 'https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_208,h_208,c_fit/FOOD_CATALOG/IMAGES/CMS/2024/5/31/d8c16ba6-bcae-420a-a41b-e2144a802431_977153a2-4bff-4672-a9de-58188081e416.jpg',
-                name: 'Chicken Fried Rice',
-                price: 169,
-                category: 'non-veg'
-            },
-            {
-                src: 'https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_208,h_208,c_fit/e75939761dbeb881f3bc8ecb9927acd4',
-                name: 'Fish Fry',
-                price: 270,
-                category: 'non-veg'
-            },
-            {
-                src: 'https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,h_600/20dae94e754e4354e64485dc4e323744',
-                name: 'Chicken Fried Noodles',
-                price: 170,
-                category: 'non-veg'
-            },
-            {
-                src: 'https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,h_600/4e166426cb5c5c61bed49f149ef7c73c',
-                name: 'Chicken Lollipop',
-                price: 225,
-                category: 'non-veg'
-            },
-            {
-                src: 'https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,h_600/0d9d2b44ce8604acd9e919a6abfd23df',
-                name: 'Hot and Sour Chicken Soup',
-                price: 140,
-                category: 'non-veg'
-            },
-            {
-                src: 'https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_208,h_208,c_fit/7e1e93343c130f56cb4211de810bb634',
-                name: 'Mushroom Biryani',
-                price: 239,
-                category: 'veg'
-            },
-            {
-                src: 'https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_208,h_208,c_fit/8d7fcc91b82a06d8c0ee6548280a7aac',
-                name: 'Super Veg Andhra Meal',
-                price: 272,
-                category: 'veg'
-            },
-            {
-                src: 'https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_208,h_208,c_fit/caoew9vk7kn7ve1othac',
-                name: 'Veggie Fried Rice Regular',
-                price: 115,
-                category: 'veg'
-            }
+        {
+            src: 'https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_300,h_300,c_fit/d6c7910482661bd8a5940c950dbe69c0',
+            name: 'Hyderabadi Chicken Biryani',
+            price: 299,
+            category: 'non-veg'
+        },
+        {
+            src: 'https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_208,h_208,c_fit/FOOD_CATALOG/IMAGES/CMS/2024/5/31/d8c16ba6-bcae-420a-a41b-e2144a802431_977153a2-4bff-4672-a9de-58188081e416.jpg',
+            name: 'Chicken Fried Rice',
+            price: 169,
+            category: 'non-veg'
+        },
+        {
+            src: 'https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_208,h_208,c_fit/e75939761dbeb881f3bc8ecb9927acd4',
+            name: 'Fish Fry',
+            price: 270,
+            category: 'non-veg'
+        },
+        {
+            src: 'https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,h_600/20dae94e754e4354e64485dc4e323744',
+            name: 'Chicken Fried Noodles',
+            price: 170,
+            category: 'non-veg'
+        },
+        {
+            src: 'https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,h_600/4e166426cb5c5c61bed49f149ef7c73c',
+            name: 'Chicken Lollipop',
+            price: 225,
+            category: 'non-veg'
+        },
+
+        {
+            src: 'https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_208,h_208,c_fit/7e1e93343c130f56cb4211de810bb634',
+            name: 'Mushroom Biryani',
+            price: 239,
+            category: 'veg'
+        },
+        {
+            src: 'https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_208,h_208,c_fit/8d7fcc91b82a06d8c0ee6548280a7aac',
+            name: 'Super Veg Andhra Meal',
+            price: 272,
+            category: 'veg'
+        },
+        {
+            src: 'https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_208,h_208,c_fit/caoew9vk7kn7ve1othac',
+            name: 'Veggie Fried Rice Regular',
+            price: 115,
+            category: 'veg'
+        },
+        {
+            src:'https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/yj6g7wugbi5qbvjtoqmr',
+            name:'Masal Dosa',
+            price:65,
+            category:'veg'
+        },
+        {
+            src:'https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_300,h_300,c_fit/jua2ddojx0q4aibynmka',
+            name:'Chappatti',
+            price:40,
+            category:'veg'
+        },
+        {
+            src: 'https://images.unsplash.com/photo-1551782450-3939704166fc?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8bW9qaXRvfGVufDB8fDB8fHww',
+            name:'blue curacao',
+            price:120,
+            category:'Mojitos'
+        },	
+        {		
+            src: 'https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,h_600/FOOD_CATALOG/IMAGES/CMS/2024/3/13/88a85cc2-a86b-4112-b8b5-c903b08e785e_82d19ad2-828b-4f78-9423-0127006f3f3c.jpg',
+            name:'Lime mint',
+            price:100,
+            category:'Mojitos'
+        },
+
+        {
+            src:'https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_208,h_208,c_fit/d0o4gx55yveblxhfwkk5',
+            name:'Watermelon mojito',
+            price:200,
+            category:'Mojitos'
+        },
+        {
+            src:'https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_208,h_208,c_fit/4c68f7509dff9ca3f7c5bacdf1cd90dd',
+            name:'Blueberry mojito',
+            price:120,
+            category:'Mojito'
+        },
+        {
+            src:'https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_208,h_208,c_fit/ffaa5abc589cb6abc68c50fed5d834f6',
+            name:'Kiwi Thunder Mojito',
+            price:100,
+            category:'Mojito'
+        },
+
         ];
 
         let totalAmount = 0;
@@ -147,6 +191,7 @@
         function renderItems() {
             const vegItemsDiv = document.getElementById('vegItemsList');
             const nonVegItemsDiv = document.getElementById('nonVegItemsList');
+            const mojitosItemsDiv = document.getElementById('mojitosList');
             foodItems.forEach(item => {
                 const itemDiv = document.createElement('div');
                 itemDiv.className = 'singleItem card text-center col-md-4 col-lg-3';
@@ -156,14 +201,17 @@
                         <h5 class="card-title">${item.name}</h5>
                         <p class="card-text">₹${item.price}</p>
                         <button class="btn btn-order" onclick="orderItem('${item.name}', ${item.price})">Order</button>
-                    </div>
-                `;
+                    </div>`;
+
                 if (item.category === 'veg') {
                     vegItemsDiv.appendChild(itemDiv);
-                } else {
+                } else if (item.category === 'non-veg') {
                     nonVegItemsDiv.appendChild(itemDiv);
+                } else {
+                    mojitosItemsDiv.appendChild(itemDiv);
                 }
             });
+
         }
 
         function orderItem(name, price) {
